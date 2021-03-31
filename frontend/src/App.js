@@ -7,6 +7,9 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
 import Header from './Header'
+import SearchPage from './SearchPage'
+import Banner from "./Banner";
+import Home from './Home'
 
 
 function App() {
@@ -18,8 +21,10 @@ function App() {
 
   return (
     <>
-      
+      {/* <Banner /> */}
+
       <Navigation isLoaded={isLoaded} />
+      <Header />
       {isLoaded && (
         <Switch>
           <Route path="/login">
@@ -28,14 +33,20 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/search">
+            <SearchPage />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
       )}
+
 
         <div>
           <h1>Spin City</h1>
         </div>
-        <Header />
-
+        
         <div>
           <h1>Explore Nearby</h1>
         </div>

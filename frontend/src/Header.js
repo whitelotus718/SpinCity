@@ -8,7 +8,7 @@ function Header() {
             <Link to='/'>
                 <img
                     className="header__icon"
-                    src="https://i.pinimg.com/originals/3c/bf/be/3cbfbe148597341fa56f2f87ade90956.png"
+                    src="https://i.ibb.co/0tJ3FjF/oxillary.png"
                     alt=""
                 />
             </Link>
