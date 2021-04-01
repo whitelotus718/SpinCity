@@ -21,10 +21,9 @@ function App() {
 
   return (
     <>
-      {/* <Banner /> */}
-
       <Navigation isLoaded={isLoaded} />
       <Header />
+
       {isLoaded && (
         <Switch>
           <Route path="/login">
@@ -46,7 +45,6 @@ function App() {
         <div>
           <h1>Spin City</h1>
         </div>
-        
         <div>
           <h1>Explore Nearby</h1>
         </div>

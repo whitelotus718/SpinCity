@@ -3,16 +3,30 @@ import React from 'react';
 import './SearchPage.css';
 // import { Button } from "@material-ui/core";
 import SearchResult from "./SearchResult";
+import { getEvents } from './store/events';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
-
-// const events = Events.findAll()   querying backend database for ALL events. forEach 
-// events.forEach(event) {
-//     <SearchResult 
-//         img=event.img
-//     />
-// }
 
 function SearchPage() {
+    
+    const dispatch = useDispatch();
+
+    
+    
+    useEffect(() => {
+        dispatch(getEvents());
+    }, [dispatch]);
+    
+    const events = useSelector(state => state.events);
+    console.log("HERE ARE THE EVENTS OBJECT!!!!", events)
+    console.log('FIRST EVENT OBJECT!!!!', events[1])
+    console.log('SECOND EVENT OBJECT!!!!', events[2])
+    // const events = useSelector(state => {
+    //     return state.events.list.map(eventId => state.events[eventId]);
+    //   });
+    
+    
     return (
         <div className='searchPage'>
             <div className='searchPage__info'>
@@ -24,28 +38,34 @@ function SearchPage() {
                 <button variant="outlined">Price</button>
                 <button variant="outlined">Location</button>
             </div>
-            <SearchResult
-                img="https://i.ibb.co/wyVMrKr/Search-Result-1-party-at-rooftop.jpg"
-                location="Party at Rooftop"
-                title="Celebrating Minhaj's 27th Birthday"
-                musicType="House"
-                description="125 guests"
-                star={4.73}
-                price="$1000"
-            />
 
-            <SearchResult
-                img="https://i.ibb.co/wyyjLnp/Search-Result-2-wedding-at-field.jpg"
-                location="Wedding at Field"
-                title="Celebrating the love of our favorite couple"
-                musicType="Ambient"
-                description="100 guests"
-                star={4.5}
-                price="$800"
-            />
+            {events.events.map((event) => {
+                return (
+                    <SearchResult key={event.id}
+                    img={event.venueImage}
+                    location={event.address}
+                    title={event.title}
+                    musicType={event.musicType}
+                    description={event.description}
+                    price={event.price}
+                    />
+                )
+            })}
 
+        <SearchResult
+            img="https://i.ibb.co/wyVMrKr/Search-Result-1-party-at-rooftop.jpg"
+            location="Party at Rooftop"
+            title="Celebrating Minhaj's 27th Birthday"
+            musicType="House"
+            description="125 guests"
+            star={4.73}
+            price="1000"
+        />
         </div>
     )
 }
 
 export default SearchPage
+
+
+
