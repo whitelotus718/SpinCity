@@ -13,5 +13,54 @@ router.get(
         res.json(events);
     }));
 
+router.post(
+    '/',
+    asyncHandler(async (req, res, next) => {
+        console.log("POST ROUTE HITS!!!",req.body)
 
-module.exports = router;
+        const {
+            eventType,
+            venueType,
+            musicType,
+            title,
+            address,
+            size,
+            price,
+            description,
+            venueImage
+        } = req.body
+    
+        const event = await models.Events.create({
+            eventType,
+            venueType,
+            musicType,
+            title,
+            address,
+            size,
+            price,
+            description,
+            venueImage,
+            userId: 1
+        })
+        return res.json({event});
+    }))
+
+
+
+
+    
+    module.exports = router;
+    
+    
+        // const bid = models.Events.build({
+    //     eventType,
+    //     venueType,
+    //     musicType,
+    //     title,
+    //     address,
+    //     size,
+    //     price,
+    //     description,
+    //     venueImage,
+    //     userId: req.session.auth.userId
+    // })
