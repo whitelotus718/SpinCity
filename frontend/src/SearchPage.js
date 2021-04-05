@@ -30,16 +30,17 @@ function SearchPage() {
                 <button variant="outlined">Price</button>
                 <button variant="outlined">Location</button>
             </div>
-
+            
             {events.events.map((event) => {
                 return (
-                    <Link to='/events/1'>                    
+                    <Link to={`/events/${event.id}`} style={{ textDecoration: 'none' }}>                    
                         <SearchResult key={event.id}
                         img={event.venueImage}
                         location={event.address}
                         title={event.title}
                         musicType={event.musicType}
                         description={event.description}
+                        eventType={event.eventType}
                         price={event.price}
                         eventId={event.id}
                     />

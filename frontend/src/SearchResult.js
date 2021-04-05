@@ -10,6 +10,7 @@ function SearchResult({
     musicType,
     star,
     price,
+    eventType,
     eventId
 }) {
 
@@ -21,11 +22,12 @@ function SearchResult({
 
             <div className='searchResult__info'>
                 <div className="searchResult__infoTop">
-                    <p>{location}</p>
                     <h3>{title}</h3>
+                    <p>{musicType} ♫</p>
+                    <p>{eventType}</p>
                     <p>____</p>
-                    <p>{musicType}</p>
-                    <p>{description}</p>
+                    <p>{location}</p>
+                    {/* <p>{description}</p> */}
                 </div>
 
                 <div className="searchResult__infoBottom">

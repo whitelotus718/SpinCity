@@ -8,7 +8,9 @@ const router = express.Router();
 
 const models = require('../../db/models/index')
 
-
+// how can I grab the current user that is logged in?
+// const user = req.session.userId ? 
+// set userId: user.id
 
 router.get(
     '/',
@@ -19,6 +21,26 @@ router.get(
     }));
 
 
+    router.post(
+        '/',
+        asyncHandler(async (req, res, next) => {
+            console.log("POST ROUTE HITS!!!",req.body)
+    
+            const {
+                eventId,
+                userId,
+                date,
+                isAccepted
+            } = req.body
+        
+            const bid = await models.Bids.create({
+                eventId,
+                userId: user.id,
+                date,
+                isAccepted
+            })
+            return res.json({bid});
+        }))
 
 module.exports = router;
 

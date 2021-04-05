@@ -52,7 +52,7 @@ const CreateEventForm = () => {
   
 // Start editing from here again!!!
 
-      const event = dispatch(createEvent(payload));
+      const event = await dispatch(createEvent(payload));
       console.log("PAYLOAD!!!", payload)
       if (event) {
         // history.push(`/events/${event.id}`);

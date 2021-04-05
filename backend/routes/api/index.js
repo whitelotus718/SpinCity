@@ -3,6 +3,7 @@ const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const eventsRouter = require("./events.js")
 const bidsRouter = require("./bids")
+const singleEventRouter = require("./single-event")
 
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
@@ -50,5 +51,8 @@ router.use("/users", usersRouter);
 router.use("/search", eventsRouter);
 
 router.use("/bids", bidsRouter)
+
+router.use("/events", singleEventRouter)
+
 
 module.exports = router;

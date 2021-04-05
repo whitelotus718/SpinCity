@@ -16,7 +16,6 @@ router.get(
 router.post(
     '/',
     asyncHandler(async (req, res, next) => {
-        console.log("POST ROUTE HITS!!!",req.body)
 
         const {
             eventType,
@@ -45,22 +44,6 @@ router.post(
         return res.json({event});
     }))
 
-
-// single-page-event
-router.get(
-    "/:id(\\d+)",
-    asyncHandler(async (req, res) => {
-      const eventId = parseInt(req.params.id, 10);
-  
-      const event = await db.Events.findByPk(eventId, {
-        // include: {
-        //   model: db.Asset,
-        // },
-      });
-  
-      return res.send(event);
-    })
-  );
 
 
     

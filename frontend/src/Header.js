@@ -23,7 +23,7 @@ function Header() {
             
             <Link to='/create-event-form'>
                 <div className='header__right'>
-                    <button onClick={() => history.push('/events/1')}>Create an Event</button>
+                    <button onClick={() => history.push('/create-event-form')}>Create an Event</button>
                 </div>
             </Link>
         </div>
