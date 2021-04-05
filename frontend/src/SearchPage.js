@@ -6,26 +6,18 @@ import SearchResult from "./SearchResult";
 import { getEvents } from './store/events';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function SearchPage() {
     
     const dispatch = useDispatch();
 
-    
-    
     useEffect(() => {
         dispatch(getEvents());
     }, [dispatch]);
     
     const events = useSelector(state => state.events);
-    console.log("HERE ARE THE EVENTS OBJECT!!!!", events)
-    console.log('FIRST EVENT OBJECT!!!!', events[1])
-    console.log('SECOND EVENT OBJECT!!!!', events[2])
-    // const events = useSelector(state => {
-    //     return state.events.list.map(eventId => state.events[eventId]);
-    //   });
-    
     
     return (
         <div className='searchPage'>
@@ -41,14 +33,17 @@ function SearchPage() {
 
             {events.events.map((event) => {
                 return (
-                    <SearchResult key={event.id}
-                    img={event.venueImage}
-                    location={event.address}
-                    title={event.title}
-                    musicType={event.musicType}
-                    description={event.description}
-                    price={event.price}
+                    <Link to='/events/1'>                    
+                        <SearchResult key={event.id}
+                        img={event.venueImage}
+                        location={event.address}
+                        title={event.title}
+                        musicType={event.musicType}
+                        description={event.description}
+                        price={event.price}
+                        eventId={event.id}
                     />
+                    </Link>
                 )
             })}
 

@@ -1,8 +1,12 @@
 import React from 'react'
 import './Header.css'
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 function Header() {
+
+    const history = useHistory();
+
     return (
         <div className='header'>
             <Link to='/'>
@@ -17,9 +21,9 @@ function Header() {
                 <input type="text" />
             </div>
             
-            <Link to='/users/:id'>
+            <Link to='/create-event-form'>
                 <div className='header__right'>
-                    <p>Profile</p>
+                    <button onClick={() => history.push('/events/1')}>Create an Event</button>
                 </div>
             </Link>
         </div>

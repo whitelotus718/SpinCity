@@ -5,11 +5,11 @@ const router = express.Router();
 const models = require('../../db/models/index')
 const { asyncHandler, csrfProtection } = require('./utils');
 
+// search results page
 router.get(
     '/',
     asyncHandler(async (req, res, next) => {
         const events = await models.Events.findAll();
-        console.log(events)
         res.json(events);
     }));
 
@@ -46,6 +46,21 @@ router.post(
     }))
 
 
+// single-page-event
+router.get(
+    "/:id(\\d+)",
+    asyncHandler(async (req, res) => {
+      const eventId = parseInt(req.params.id, 10);
+  
+      const event = await db.Events.findByPk(eventId, {
+        // include: {
+        //   model: db.Asset,
+        // },
+      });
+  
+      return res.send(event);
+    })
+  );
 
 
     

@@ -10,6 +10,8 @@ import Header from './Header'
 import SearchPage from './SearchPage'
 import Banner from "./Banner";
 import Home from './Home'
+import SingleEventPage from "./Single-Event-Page";
+import CreateEventForm from "./Create-Event-Form";
 
 
 function App() {
@@ -18,6 +20,17 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+
+  const [eventType, setEventType] = useState("Dance Party");
+  const [venueType, setVenueType] = useState('Bar');
+  const [musicType, setMusicType] = useState('Electronic');
+  const [title, setTitle] = useState("Kickstart your weekend with our electronic dance party!")
+  const [address, setAddress] = useState('200 Bowrey');
+  const [size, setSize] = useState(100);
+  const [price, setPrice] = useState(1200);
+  const [description, setDescription] = useState('This is gonna be a really wild party guys!');
+  const [venueImage, setVenueImage] = useState('https://i.ibb.co/KrnF0r8/Bowrey-Image.jpg');
 
   return (
     <>
@@ -35,29 +48,17 @@ function App() {
           <Route path="/search">
             <SearchPage />
           </Route>
+          <Route path="/events/1">
+            <SingleEventPage title={title} musicType={musicType} title={title} address={address} size={size} price={price} description={description} venueImage={venueImage} eventType={eventType}/>
+          </Route>
+          <Route path="/create-event-form">
+            <CreateEventForm />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
       )}
-
-
-        <div>
-          <h1>Spin City</h1>
-        </div>
-        <div>
-          <h1>Explore Nearby</h1>
-        </div>
-        <div>
-          <h1>Live Anywhere</h1>
-        </div>
-        <div>
-          <h1>Become a Host</h1>
-        </div>
-        <div>
-          <h1>Discover Experiences</h1>
-        </div>
-
 
     </>
   );

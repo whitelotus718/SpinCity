@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchResult.css';
+import { useHistory } from 'react-router-dom';
 
 function SearchResult({
     img,
@@ -9,8 +10,11 @@ function SearchResult({
     musicType,
     star,
     price,
-    total,
+    eventId
 }) {
+
+    const history = useHistory();
+
     return (
         <div className='searchResult'>
             <img src={img} alt="" />

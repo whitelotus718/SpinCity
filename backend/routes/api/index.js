@@ -2,15 +2,17 @@ const router = require("express").Router();
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const eventsRouter = require("./events.js")
+const bidsRouter = require("./bids")
 
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
+
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
   const user = await User.findOne({
       where: {
-        username: 'Demo-lition'
+        email: 'zhu@gmail.com'
       },
     })
   setTokenCookie(res, user);
@@ -46,5 +48,7 @@ router.use("/session", sessionRouter);
 router.use("/users", usersRouter);
 
 router.use("/search", eventsRouter);
+
+router.use("/bids", bidsRouter)
 
 module.exports = router;

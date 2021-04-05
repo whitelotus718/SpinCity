@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Events', [
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert('Events', [
       {
         eventType: 'Party',
         venueType: 'Rooftop',
@@ -30,7 +30,7 @@ module.exports = {
     ], {});
   },
 
-  down: (queryInterface, Sequelize) => {
-    
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('Events', null, {});
   }
 };
