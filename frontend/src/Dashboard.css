@@ -1,0 +1,16 @@
+.dashboard-container {
+  display: flex; 
+  flex-direction: row;
+}
+
+.side-nav {
+  padding: 0px 20px;
+}
+
+.main-display {
+  padding: 0px 20px;
+}
+
+.right-side-display {
+  padding: 0px 20px;
+}

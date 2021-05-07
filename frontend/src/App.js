@@ -12,7 +12,7 @@ import Banner from "./Banner";
 import Home from './Home'
 import SingleEventPage from "./Single-Event-Page";
 import CreateEventForm from "./Create-Event-Form";
-
+import Dashboard from "./Dashboard"
 
 function App() {
   const dispatch = useDispatch();
@@ -23,8 +23,8 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      <Header />
+      {/* <Navigation isLoaded={isLoaded} /> */}
+      {/* <Header /> */}
 
       {isLoaded && (
         <Switch>
@@ -42,6 +42,9 @@ function App() {
           </Route>
           <Route path="/create-event-form">
             <CreateEventForm />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>
           <Route path="/">
             <Home />
